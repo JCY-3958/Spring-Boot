@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import java.time.LocalDateTime;
 
+//DB테이블 생성, 담을 그릇을 만듦, VO역할
 @Entity
 @Table(name = "item")
 @Getter
