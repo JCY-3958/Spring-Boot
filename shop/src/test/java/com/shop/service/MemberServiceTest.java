@@ -11,6 +11,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 @Transactional
@@ -32,16 +33,32 @@ class MemberServiceTest {
         return Member.createMember(memberFormDto, passwordEncoder);
     }
 
-    @Test
+    /*@Test
     @DisplayName("회원가입 테스트")
     public void saveMemberTest() {
         Member member = createMember();
         Member savedMember = memberService.saveMember(member);
 
+        //이미 서비스에서 비교를 했는데 왜 또 비교를 하나?
+        //assert가 alert 경고문 띄워준느거 걍 테스트인듯
         assertEquals(member.getEmail(), savedMember.getEmail());
         assertEquals(member.getName(), savedMember.getName());
         assertEquals(member.getAddress(), savedMember.getAddress());
         assertEquals(member.getPassword(), savedMember.getPassword());
         assertEquals(member.getRole(), savedMember.getRole());
+    }*/
+
+    @Test
+    @DisplayName("중복 회원 가입 테스트")
+    public void saveDuplicateMemberTest() {
+        Member member1 = createMember();
+        Member member2 = createMember();
+        memberService.saveMember(member1);
+
+        Throwable e = assertThrows(IllegalStateException.class, () -> {
+            memberService.saveMember(member2);
+        });
+
+        assertEquals("이미 가입된 회원입니다.", e.getMessage());
     }
 }

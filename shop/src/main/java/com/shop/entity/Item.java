@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 //DB테이블 생성, 담을 그릇을 만듦, VO역할
 @Entity
@@ -35,6 +36,14 @@ public class Item {
 
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus;
+
+    @ManyToMany
+    @JoinTable(
+            name = "member_item",
+            joinColumns = @JoinColumn(name = "member_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id")
+    )
+    private List<Member> member;
 
     private LocalDateTime regTime;
     private LocalDateTime updateTime;
