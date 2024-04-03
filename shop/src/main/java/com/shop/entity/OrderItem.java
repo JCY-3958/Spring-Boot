@@ -17,19 +17,15 @@ public class OrderItem {
     @Column(name = "order_item_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) //지연 로딩으로 변경
     @JoinColumn(name = "item_id") //OderItem.item_id = Item.item_id
     private Item item;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) //지연 로딩으로 변경
     @JoinColumn(name = "order_id") // OrderItem.order_id = Order.order_id
     private Order order;
 
     private int orderPrice;
 
     private int count;
-
-    private LocalDateTime regTime;
-
-    private LocalDateTime updateTime;
 }
