@@ -3,6 +3,21 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
 
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        .carousel-inner > .item {
+            height: 350px;
+        }
+        .margin {
+            margin-bottom: 30px;
+        }
+        .banner {
+            height: 300px;
+        }
+    </style>
+</th:block>
+
 <div layout:fragment="content">
     <h1>메인페이지입니다.</h1>
 </div>
