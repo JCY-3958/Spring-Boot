@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 //@Table이 없으면 클래스 이름 그대로 만들어짐
-public class OrderItem {
+public class OrderItem extends BaseEntity{
 
     @Id
     @GeneratedValue
@@ -28,4 +28,22 @@ public class OrderItem {
     private int orderPrice;
 
     private int count;
+
+    public static OrderItem createOrderItem(Item item, int count) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setCount(count);
+        orderItem.setOrderPrice(item.getPrice());
+
+        item.removeStock(count);
+        return orderItem;
+    }
+
+    public int getTotalPrice() {
+        return orderPrice * count;
+    }
+
+    public void cancel() {
+        this.getItem().addStock(count);
+    }
 }
