@@ -28,6 +28,15 @@ public class SecurityConfig{
                         requestMatchers(new AntPathRequestMatcher("/**")).permitAll());
         */
         http
+                //아니 jar로 배포하면 login이 왜 안되는데
+                .authorizeRequests((authorizeRequests) ->
+                        authorizeRequests
+                                .requestMatchers("/members/login").permitAll()
+                                .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                                .requestMatchers("/", "members/**", "/item/**", "/images/**").permitAll()
+                                .requestMatchers("/admin/**").hasRole("ADMIN")
+                                .anyRequest().authenticated()
+                )
                 .formLogin((formLogin) ->
                     formLogin
                             .loginPage("/members/login") // 로그인 페이지
@@ -39,13 +48,6 @@ public class SecurityConfig{
                         logoutConfig
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))
                                 .logoutSuccessUrl("/")
-                )
-                .authorizeRequests((authorizeRequests) ->
-                        authorizeRequests
-                                .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
-                                .requestMatchers("/", "members/**", "/item/**", "/images/**").permitAll()
-                                .requestMatchers("/admin/**").hasRole("ADMIN")
-                                .anyRequest().authenticated()
                 )
                 .exceptionHandling((exceptionConfig) ->
                         exceptionConfig
