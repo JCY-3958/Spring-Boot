@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.4'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.codehows'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //스프링 스타터는 의존성이 모여 있는 그룹, spring-boot-starter-[작업유형]
+    //자주 사용하는 작업 유형
+    //spring-boot-starter-web -> springMVC를 이용, RESTful 웹 서비스를 개발할 때 필요한 의존성 모음
+    //spring-boot-starter-test -> 스프링 어플 테스트
+    //spring-boot-starter-validation -> 유효성 검사
+    //spring-boot-starter-actuator -> 모니터링을 위해 앱에서 제공하는 다양한 정보를 제공
+    //spring-boot-starter-data-jpa -> ORM을 사용하기 위한 인터페이스의 모음인 JPA를 더 쉽게 사용
+
+    //자동 구성 : 앱으 최소한의 설정만으로도 실행되도록 여러 부분을 자동으로 구성
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
+    compileOnly 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
