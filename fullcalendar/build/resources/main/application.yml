@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    # 실행되는 sql문 보여줌
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+    #실행할 수 있는 sql문이 있다면 실행하라
+    #data.sql이 있으니 실행함
+    defer-datasource-initialization: true
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+
+  h2:
+    console:
+      enabled: true
