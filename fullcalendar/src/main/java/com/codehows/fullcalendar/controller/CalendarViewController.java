@@ -21,11 +21,6 @@ public class CalendarViewController {
 
     @GetMapping("/calendar")
     public String getcalendar(Model model) {
-        /*List<NoteResponse> notes = noteService.findAll().stream()
-                .map(NoteResponse::new)
-                .toList();
-
-        model.addAttribute("notes", notes);*/
         return "calendar";
     }
 
@@ -33,5 +28,20 @@ public class CalendarViewController {
     public String newNote() {
 
         return "newNote";
+    }
+
+    @GetMapping("/calendar/note/{id}")
+    public String ViewNote(@PathVariable Long id, Model model) {
+        //System.out.println("이거시다:" + id);
+        Note note = noteService.findById(id);
+       model.addAttribute("note", new NoteViewResponse(note));
+        return "ViewNote";
+    }
+
+    @GetMapping("/calendar/noteupdate")
+    public String UpdateNote(@RequestParam Long id, Model model) {
+        Note note = noteService.findById(id);
+        model.addAttribute("note", new NoteViewResponse(note));
+        return "updateNote";
     }
 }

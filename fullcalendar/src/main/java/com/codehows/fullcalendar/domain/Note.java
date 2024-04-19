@@ -23,11 +23,14 @@ public class Note {
     @Column(name = "content", nullable = false)
     private String content;
 
-    @CreatedDate
+    @Column(name = "start")
+    private LocalDate start;
+
+    /*@CreatedDate
     @Column(name = "start")
     //달력에 띄울 때 start 값이 yyyy-MM-dd로 되어야하는데
     //LocalDateTime이면 뒤에 이상
-    private LocalDate start;
+    private LocalDate start;*/
 
     @Builder
     public Note(String title, String content, LocalDate start) {
