@@ -1,3 +1,4 @@
+/*
 package com.codehows.sbd.config;
 
 import com.codehows.sbd.service.UserDetailService;
@@ -54,7 +55,8 @@ public class WebSecurityConfig {
                 )
                 .build();
 
-        /*return http
+        */
+/*return http
                 .authorizeHttpRequests() //인증, 인가 설정
                 .requestMatchers("/login", "/signup", "/user").permitAll()
                 .anyRequest().authenticated()
@@ -68,7 +70,8 @@ public class WebSecurityConfig {
                 .invalidateHttpSession(true)
                 .and()
                 .csrf().disable() //csrf 비활성화
-                .build();*/
+                .build();*//*
+
     }
 
     @Bean //인증 관리자 관련 설정
@@ -84,3 +87,4 @@ public class WebSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
+*/

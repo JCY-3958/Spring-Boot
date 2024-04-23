@@ -14,10 +14,11 @@ public class AddArticleRequest {
     private String content;
 
     //new Article(title, content)와 같은거 밑에가 가독성 더 좋음
-    public Article toEntity() {
+    public Article toEntity(String author) {
         return Article.builder()
                 .title(title)
                 .content(content)
+                .author(author)
                 .build();
     }
 

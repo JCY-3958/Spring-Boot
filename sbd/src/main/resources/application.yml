@@ -18,6 +18,17 @@ spring:
     console:
       enabled: true
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id:
+            client-secret:
+            scope:
+              - email
+              - profile
+
 jwt:
   issuer: w7e43958@naver.com
   secret_key: study-springboot
