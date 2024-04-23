@@ -12,7 +12,23 @@ spring:
 
   datasource:
     url: jdbc:h2:mem:testdb
+    username: sa
 
   h2:
     console:
       enabled: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 678853465746-452r1qpp40m8u69aeqgjdenqcq3s03hq.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+
+jwt:
+  issuer: w7e43958@naver.com
+  secret_key: study-springboot
