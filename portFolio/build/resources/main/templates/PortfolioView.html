@@ -22,12 +22,14 @@
                         ${#temporals.format(portfolio.createTime, 'yyyy-MM-dd HH:mm')} By ${portfolio.portName}|"></div>
                 </header>
                 <section class="mb-5">
-                    <p class="fs-5 mb-4" th:text="${portfolio.projectIntro}"></p>
+                    <p class="fs-5 mb-4" th:utext="${portfolio.projectIntro}"></p>
                 </section>
                 <button type="button" id="modify-btn"
                         th:onclick="|location.href='@{/portfolio/modify}'|"
                         class="btn btn-primary btn-sm">수정</button>
-                <button type="button" id="delete-btn" class="btn btn-secondary btn-sm">삭제</button>
+                <button type="button" id="delete-btn" class="btn btn-danger btn-sm">삭제</button>
+                <button type="button" th:onclick="|location.href='@{/portfolio}'|"
+                        class="btn btn-secondary btn-sm">뒤로 가기</button>
             </article>
         </div>
     </div>

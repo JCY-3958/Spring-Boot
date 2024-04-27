@@ -53,6 +53,7 @@ public class FileApiController {
         String fileFullPath = Paths.get(uploadDir, filename).toString();
 
         //파일이 없는 경우 예외
+
         File uploadedFile = new File(fileFullPath);
         if(uploadedFile.exists() == false) {
             throw new RuntimeException();

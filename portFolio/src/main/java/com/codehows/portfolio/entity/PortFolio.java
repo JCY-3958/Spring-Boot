@@ -1,5 +1,6 @@
 package com.codehows.portfolio.entity;
 
+import com.codehows.portfolio.constant.Represent;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -27,7 +28,7 @@ public class PortFolio {
     private String title;
 
     //포트폴리오 소유자 이름
-    @Column(name = "portName", nullable = false)
+    @Column(name = "portName")
     private String portName;
 
     //연락처
@@ -39,7 +40,7 @@ public class PortFolio {
     private String portEmail;
 
     //포트폴리오 한줄 소개
-    @Column(name = "summary", nullable = false)
+    @Column(name = "summary")
     private String summary;
 
     //나의 기술 스택
@@ -47,10 +48,12 @@ public class PortFolio {
     private String mySkill;
 
     //나의 프로젝트 소개
+    @Lob
     @Column(name = "projectIntro", nullable = false)
     private String projectIntro;
 
     //대표 게시물인가
+    /*@Enumerated(EnumType.STRING)*/
     @Column(name = "represent")
     private Boolean represent;
     //-----------------------------------------
@@ -66,7 +69,7 @@ public class PortFolio {
     private LocalDateTime updateTime;
 
     @Builder
-    public PortFolio(String title, String portName, String phone, String portEmail, String summary, String mySkill, String projectIntro, boolean represent) {
+    public PortFolio(String title, String portName, String phone, String portEmail, String summary, String mySkill, String projectIntro, Boolean represent) {
         this.title = title;
         this.portName = portName;
         this.phone = phone;
@@ -77,7 +80,7 @@ public class PortFolio {
         this.represent = represent;
     }
 
-    public void update(String title, String portName, String portEmail, String phone, String summary, String mySkill, String projectIntro, boolean represent) {
+    public void update(String title, String portName, String portEmail, String phone, String summary, String mySkill, String projectIntro, Boolean represent) {
         this.title = title;
         this.portName = portName;
         this.phone = phone;

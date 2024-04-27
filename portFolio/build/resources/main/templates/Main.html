@@ -12,16 +12,42 @@
 </div>
 
 <div class="container">
-    <button type="button" id="create-btn"
-            th:onclick="|location.href='@{/portfolio/new}'|"
-            class="btn btn-secondary btn-sm mb-3">글 등록</button>
+        <button type="button" th:onclick="|location.href='@{/portfolio/new}'|"
+                class="btn btn-secondary btn-sm mb-3">글 등록</button>
+        <button type="button" th:onclick="|location.href='@{/portfolio/ManagePortfolio}'|"
+                class="btn btn-secondary btn-sm mb-3">포트폴리오 관리</button>
     <div class="row-6">
         <div class="card"></div>
-            <div class="card-body" style="text-align: center;">
-                <h1 class="card-title" th:text="${portfolio.title}"></h1>
+            <div class="card-body">
+
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <article>
+                                <input type="hidden" id="article-id" th:value="${portfolio.id}">
+                                <header class="mb-4">
+                                    <h1 class="fw-bolder mb-1" th:text="${portfolio.title}"></h1>
+                                    <div class="text-muted fst-italic mb-2" th:text="|Posted on
+                        ${#temporals.format(portfolio.createTime, 'yyyy-MM-dd HH:mm')} By ${portfolio.portName}|"></div>
+                                </header>
+                                <section class="mb-5">
+                                    <p class="fs-5 mb-4" th:utext="${portfolio.projectIntro}"></p>
+                                </section>
+                                <button type="button" id="modify-btn"
+                                        th:onclick="|location.href='@{/portfolio/modify}'|"
+                                        class="btn btn-primary btn-sm">수정</button>
+                                <button type="button" id="delete-btn" class="btn btn-danger btn-sm">삭제</button>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!--<h1 class="card-title" th:text="${portfolio.title}"></h1>
                 <p class="card-text" th:text="${portfolio.createTime}"></p>
                 <p class="card-text" th:text="${portfolio.updateTime}"></p>
-                <a th:href="@{/portfolio/{id}(id=${portfolio.id})}" class="btn btn-primary">보러 가기</a>
+                <a th:href="@{/portfolio/{id}(id=${portfolio.id})}" class="btn btn-primary">보러 가기</a>-->
             </div>
         </div>
         <br>

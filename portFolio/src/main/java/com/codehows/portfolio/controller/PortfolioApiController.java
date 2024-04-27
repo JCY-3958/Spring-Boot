@@ -19,6 +19,7 @@ public class PortfolioApiController {
     @PostMapping("/api/portfolio")
     public ResponseEntity<PortFolio> addPortfolio(@RequestBody AddPortfolioRequest request) {
         PortFolio savedPortfolio = portfolioService.save(request);
+        //System.out.println("여기로 오냐?");
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedPortfolio);
