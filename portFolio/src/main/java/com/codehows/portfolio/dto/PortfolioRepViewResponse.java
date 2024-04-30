@@ -1,6 +1,7 @@
 package com.codehows.portfolio.dto;
 
 import com.codehows.portfolio.entity.PortFolio;
+import com.codehows.portfolio.entity.RepresentPortfolio;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,20 +21,15 @@ public class PortfolioRepViewResponse {
     private String mySkill;
     private String projectIntro;
 
-    private LocalDateTime createTime;
-    private LocalDateTime updateTime;
-
-    public PortfolioRepViewResponse(PortFolio portFolio) {
-        this.id = portFolio.getId();
-        this.title = portFolio.getTitle();
-        this.portName = portFolio.getPortName();
-        this.phone = portFolio.getPhone();
-        this.portEmail = portFolio.getPortEmail();
-        this.summary = portFolio.getSummary();
-        this.mySkill = portFolio.getMySkill();
-        this.projectIntro = portFolio.getProjectIntro();
-        this.createTime = portFolio.getCreateTime();
-        this.updateTime = portFolio.getUpdateTime();
+    public PortfolioRepViewResponse(RepresentPortfolio representPortfolio) {
+        this.id = representPortfolio.getId();
+        this.title = representPortfolio.getTitle();
+        this.portName = representPortfolio.getPortName();
+        this.phone = representPortfolio.getPhone();
+        this.portEmail = representPortfolio.getPortEmail();
+        this.summary = representPortfolio.getSummary();
+        this.mySkill = representPortfolio.getMySkill();
+        this.projectIntro = representPortfolio.getProjectIntro();
     }
 
 }

@@ -15,25 +15,32 @@
     <div class="row">
         <div class="col-lg-8">
             <article>
-                <input type="hidden" id="article-id" th:value="${portfolio.id}">
+                <input type="hidden" id="portfolio-id" th:value="${portfolio.id}">
                 <header class="mb-4">
                     <h1 class="fw-bolder mb-1" th:text="${portfolio.title}"></h1>
                     <div class="text-muted fst-italic mb-2" th:text="|Posted on
                         ${#temporals.format(portfolio.createTime, 'yyyy-MM-dd HH:mm')} By ${portfolio.portName}|"></div>
                 </header>
                 <section class="mb-5">
-                    <p class="fs-5 mb-4" th:utext="${portfolio.projectIntro}"></p>
+                    <p class="fs-5 mb-4" th:text="${portfolio.phone}"></p>
+                    <p class="fs-5 mb-4" th:text="${portfolio.portEmail}"></p>
+                    <p class="fs-5 mb-4" th:text="${portfolio.summary}"></p>
+                    <p class="fs-5 mb-4" th:text="${portfolio.mySkill}"></p>
+                    <p class="fs-5 mb-4" th:text="${portfolio.projectIntro}"></p>
                 </section>
                 <button type="button" id="modify-btn"
-                        th:onclick="|location.href='@{/portfolio/modify}'|"
+                        th:onclick="|location.href='@{/portfolio/modify?id={articleId}(articleId=${portfolio.id})}'|"
                         class="btn btn-primary btn-sm">수정</button>
                 <button type="button" id="delete-btn" class="btn btn-danger btn-sm">삭제</button>
                 <button type="button" th:onclick="|location.href='@{/portfolio}'|"
                         class="btn btn-secondary btn-sm">뒤로 가기</button>
+                <button type="button" id="represent-btn" class="btn btn-primary btn-sm">대표 지정</button>
+                        <!--th:onclick="|location.href='@{/portfolio}'|"-->
+
             </article>
         </div>
     </div>
 </div>
-<script src="/js/article.js"></script>
+<script src="/js/portfolio.js"></script>
 </body>
 </html>

@@ -44,7 +44,10 @@
                     <p>프로젝트 소개</p>
                     <textarea class="form-control h-25" rows="10" placeholder="나의 프로젝트 소개"
                               id="intro" th:text="${portfolio.projectIntro}"></textarea>
+                    <!--<p>파일 첨부</p>
+                    <input type="file" class="form-control-file" id="file" name="file">-->
                 </section>
+
                 <div id="btnDiv">
                     <button th:if="${portfolio.id} == null" type="button" id="create-btn"
                             class="btn btn-primary btn-sm">등록</button>

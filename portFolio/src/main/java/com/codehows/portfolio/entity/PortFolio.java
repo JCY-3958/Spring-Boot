@@ -1,6 +1,5 @@
 package com.codehows.portfolio.entity;
 
-import com.codehows.portfolio.constant.Represent;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -52,10 +51,10 @@ public class PortFolio {
     @Column(name = "projectIntro", nullable = false)
     private String projectIntro;
 
-    //대표 게시물인가
-    /*@Enumerated(EnumType.STRING)*/
+    /*//대표 게시물인가
+    *//*@Enumerated(EnumType.STRING)*//*
     @Column(name = "represent")
-    private Boolean represent;
+    private Boolean represent;*/
     //-----------------------------------------
 
     //생성 시각
@@ -69,7 +68,7 @@ public class PortFolio {
     private LocalDateTime updateTime;
 
     @Builder
-    public PortFolio(String title, String portName, String phone, String portEmail, String summary, String mySkill, String projectIntro, Boolean represent) {
+    public PortFolio(String title, String portName, String phone, String portEmail, String summary, String mySkill, String projectIntro) {
         this.title = title;
         this.portName = portName;
         this.phone = phone;
@@ -77,10 +76,9 @@ public class PortFolio {
         this.summary = summary;
         this.mySkill = mySkill;
         this.projectIntro = projectIntro;
-        this.represent = represent;
     }
 
-    public void update(String title, String portName, String portEmail, String phone, String summary, String mySkill, String projectIntro, Boolean represent) {
+    public void update(String title, String portName, String portEmail, String phone, String summary, String mySkill, String projectIntro) {
         this.title = title;
         this.portName = portName;
         this.phone = phone;
@@ -88,6 +86,9 @@ public class PortFolio {
         this.summary = summary;
         this.mySkill = mySkill;
         this.projectIntro = projectIntro;
-        this.represent = represent;
     }
+
+    /*public void updateRepresent(Boolean represent) {
+        this.represent = represent;
+    }*/
 }
