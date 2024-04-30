@@ -113,3 +113,62 @@ if(createButton) {
 
     });
 }
+
+const modifyButton = document.getElementById('modify-btn');
+
+if(modifyButton) {
+    modifyButton.addEventListener('click', (event) => {
+        console.log("이거 댐?");
+        let params = new URLSearchParams(location.search);
+        //여러개 중에 id만 갯또다제
+        let id = params.get("id");
+        fetch(`/api/portfolio/${id}`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                title:document.getElementById("title").value,
+                portName:document.getElementById("name").value,
+                phone:document.getElementById("phone").value,
+                portEmail:document.getElementById("email").value,
+                summary:document.getElementById("line").value,
+                mySkill:document.getElementById("skill").value,
+                projectIntro: document.getElementById("intro").value,
+            })
+        })
+            .then(() => {
+                alert("수정 완료");
+                location.replace(`/portfolio/${id}`);
+            });
+    });
+}
+
+const deleteButton = document.getElementById('delete-btn');
+if(deleteButton) {
+    deleteButton.addEventListener('click', (event) =>{
+        let id = document.getElementById('portfolio-id').value;
+        fetch(`/api/portfolio/${id}`, {
+            method: 'DELETE'
+        })
+            .then(()=> {
+                alert('삭제가 완료되었습니다.');
+                location.replace('/portfolio');
+        });
+    });
+}
+
+const RepresentButton = document.getElementById('represent-btn');
+if(RepresentButton) {
+    RepresentButton.addEventListener('click', (event) =>{
+        let id = document.getElementById('portfolio-id').value;
+        console.log("이겁니다:" + id);
+        fetch(`/api2/portfolio/${id}`, {
+            method: 'POST'
+        })
+            .then(()=> {
+                alert('대표 등록이 완료되었습니다.');
+                location.replace('/portfolio');
+            });
+    });
+}

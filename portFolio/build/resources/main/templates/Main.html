@@ -24,19 +24,18 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <article>
-                                <input type="hidden" id="article-id" th:value="${portfolio.id}">
-                                <header class="mb-4">
-                                    <h1 class="fw-bolder mb-1" th:text="${portfolio.title}"></h1>
-                                    <div class="text-muted fst-italic mb-2" th:text="|Posted on
-                        ${#temporals.format(portfolio.createTime, 'yyyy-MM-dd HH:mm')} By ${portfolio.portName}|"></div>
-                                </header>
-                                <section class="mb-5">
-                                    <p class="fs-5 mb-4" th:utext="${portfolio.projectIntro}"></p>
-                                </section>
-                                <button type="button" id="modify-btn"
-                                        th:onclick="|location.href='@{/portfolio/modify}'|"
-                                        class="btn btn-primary btn-sm">수정</button>
-                                <button type="button" id="delete-btn" class="btn btn-danger btn-sm">삭제</button>
+                                <div th:each="rep : ${repPortfolio}">
+                                    <input type="hidden" id="article-id" th:value="${rep.id}">
+                                    <header class="mb-4">
+                                        <h1 class="fw-bolder mb-1" th:text="${rep.title}"></h1>
+                                        <div class="text-muted fst-italic mb-2" th:text="|Posted By ${rep.portName}|"></div>
+                                    </header>
+                                    <section class="mb-5">
+                                        <p>연락처</p>
+                                        <p class="fs-5 mb-4" th:utext="${rep.phone}"></p>
+                                        <p class="fs-5 mb-4" th:utext="${rep.projectIntro}"></p>
+                                    </section>
+                                </div>
                             </article>
                         </div>
                     </div>

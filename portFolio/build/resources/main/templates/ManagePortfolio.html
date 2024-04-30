@@ -14,7 +14,7 @@
 <div class="container">
     <div class="row-6" th:each="item : ${portfolios}">
         <div class="card">
-            <div class="card-header" th:text="${item.id}">
+            <div class="card-header" id="repId" th:text="${item.id}">
             </div>
 
             <div class="card-body">
@@ -24,16 +24,12 @@
                 <div class="text-muted fst-italic mb-2" th:text="|Update on
                         ${#temporals.format(item.updateTime, 'yyyy-MM-dd HH:mm')}|"></div>
                 <a th:href="@{/portfolio/{id}(id=${item.id})}" class="btn btn-primary">보러 가기</a>
-                <input type="checkbox" class="form-check-input" id="checkbox${iterStat.index}"
-                       onclick="handleCheckboxChange(${iterStat.index})">
-                <label class="form-check-label" for="checkbox${iterStat.index}">대표 지정</label>
             </div>
         </div>
         <br>
     </div>
 
 </div>
-<!--<script src="/js/token.js"></script>
-<script src="/js/article.js"></script>-->
+<script src="/js/portfolio.js"></script>
 </body>
 </html>
